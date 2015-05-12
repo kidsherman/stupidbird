@@ -14,6 +14,7 @@
 
 //引入回复文本的函数文件
 require_once 'responseText.func.inc.php';
+require_once 'responseNews.func.inc.php';
 
 //define your token
 define("TOKEN", "stupidbird");
@@ -68,15 +69,33 @@ public function responseMsg()
     {
         $keyword = trim($postObj->Content);
 
-        if(!empty( $keyword ))
-        {
-            $contentStr = "感谢你的回复！老臭虫正在调试微信API接口，所以回复的信息对您来说暂时没有什么意义，您就当帮我测试了：）";
-            //$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-			$resultStr = _response_text($postObj,$contentStr);
-            echo $resultStr;
-        }else{
-            echo "Input something...";
-        }
+        /**
+ * if(!empty( $keyword ))
+ *         {
+ *             $contentStr = "感谢你的回复！老臭虫正在调试微信API接口，所以回复的信息对您来说暂时没有什么意义，您就当帮我测试了：）";
+ *             //$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+ * 			$resultStr = _response_text($postObj,$contentStr);
+ *             echo $resultStr;
+ *         }else{
+ *             echo "Input something...";
+ *         }
+ */
+ 
+         if(!empty( $keyword ))
+                {
+					$record=array(
+                         'title' =>"今日销售简报"."\n"."___________________________________"."\n"."微信接口测试，您看到了请果断无视",
+						//'title' =>'今日销售简报'.'\n'.'___________________'.'\n'.'（微信接口测试，您看到了请果断无视）',
+						'description' =>'今日销售iphone 6 3台，oppo 1台，vivo 1台，小米 1台，充电宝 1个,...详情请点击',
+						'picUrl' => 'http://d3.freep.cn/3tb_1505121823458ynp550081.jpg',
+						'url' =>'http://stupidbird.gotoip55.com/report.html'
+					);
+
+					$resultStr = _response_news($postObj,$record);
+					echo $resultStr;
+                }else{
+                	echo "Input something...";
+                }
     }
     
    
