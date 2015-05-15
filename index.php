@@ -77,7 +77,7 @@ class wechat
                     //'title' =>'今日销售简报'.'\n'.'___________________'.'\n'.'（微信接口测试，您看到了请果断无视）',
                     'description' => '今日销售iphone 6 3台，oppo 1台，vivo 1台，小米 1台，充电宝 1个,...详情请点击',
                     'picUrl' => 'http://d3.freep.cn/3tb_1505121823458ynp550081.jpg',
-                    'url' => 'http://stupidbird.gotoip55.com/report.html');
+                    'url' => 'http://stupidbird.gotoip55.com/report.php');
 
                 $resultStr = _response_news($postObj, $record);
                 echo $resultStr;
